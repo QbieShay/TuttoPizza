@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="Name" type="LineEdit"]
+margin_left = -131.894
+margin_top = 168.625
+margin_right = 131.106
+margin_bottom = 218.625
+custom_styles/read_only = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+custom_colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+editable = false
+placeholder_text = "Trashcan"
+placeholder_alpha = 1.0
+caret_blink = true
+
