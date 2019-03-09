@@ -1,0 +1,35 @@
+extends Spatial
+
+export(NodePath) var top_left_corner_path
+export(NodePath) var top_right_corner_path 
+export(NodePath) var bottom_left_corner_path 
+export(NodePath) var bottom_right_corner_path 
+
+var _top_left_corner_coordinate
+var _top_right_corner_coordinate
+var _bottom_left_corner_coordinate
+var _bottom_right_corner_coordinate
+
+var _width = 1.0
+var _height = 1.0
+
+func _ready():
+	_top_left_corner_coordinate = get_viewport().get_camera().unproject_position(get_node(top_left_corner_path).global_transform.origin)
+	_top_right_corner_coordinate = get_viewport().get_camera().unproject_position(get_node(top_right_corner_path).global_transform.origin)
+	_bottom_left_corner_coordinate = get_viewport().get_camera().unproject_position(get_node(bottom_left_corner_path).global_transform.origin)
+	_bottom_right_corner_coordinate = get_viewport().get_camera().unproject_position(get_node(bottom_right_corner_path).global_transform.origin)
+	_width = _top_right_corner_coordinate.x - _top_left_corner_coordinate.x
+	_height = _bottom_right_corner_coordinate.y - _top_right_corner_coordinate.y
+
+func link_to_viewport(viewport):
+	$MeshInstance.get_surface_material(0).albedo_texture = viewport.get_texture()
+	$MeshInstance.get_surface_material(0).emission_texture = viewport.get_texture()
+
+
+func transform_in_screen_coordinate(position):
+	if _top_left_corner_coordinate == null:
+		return position
+	var new_x = position.x - _top_left_corner_coordinate.x
+	var new_y = position.y - _top_left_corner_coordinate.y
+	var normalized_position = Vector2(new_x/_width, new_y/_height)
+	return normalized_position

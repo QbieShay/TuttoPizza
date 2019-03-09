@@ -16,3 +16,7 @@ _global_script_class_icons={
 [application]
 
 run/main_scene="res://Main.tscn"
+
+[rendering]
+
+environment/default_environment="res://game.tres"
