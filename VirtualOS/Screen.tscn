@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://VirtualOS/Screen.gd" type="Script" id=1]
+[ext_resource path="res://VirtualOS/Boot/BootScreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://VirtualOS/Desktop/Desktop.tscn" type="PackedScene" id=3]
+
+[node name="Screen" type="CanvasLayer"]
+script = ExtResource( 1 )
+boot_scene = ExtResource( 2 )
+OS_scene = ExtResource( 3 )
+
