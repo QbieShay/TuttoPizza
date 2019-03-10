@@ -1,0 +1,46 @@
+[gd_resource type="Theme" load_steps=4 format=2]
+
+[ext_resource path="res://Assets/VirtualOS/BootFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/VirtualOS/close.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.827451, 0.752941, 0.658824, 1 )
+border_width_top = 26
+border_color = Color( 0.176471, 0.105882, 0.180392, 1 )
+corner_detail = 1
+expand_margin_top = 26.0
+
+[resource]
+default_font = ExtResource( 1 )
+Dialogs/constants/button_margin = 32
+Dialogs/constants/margin = 40
+PopupMenu/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
+PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
+PopupMenu/colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = null
+PopupMenu/icons/checked = null
+PopupMenu/icons/radio_checked = null
+PopupMenu/icons/radio_unchecked = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/unchecked = null
+PopupMenu/styles/hover = null
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = null
+PopupMenu/styles/panel_disabled = null
+PopupMenu/styles/separator = null
+PopupPanel/styles/panel = null
+WindowDialog/colors/title_color = Color( 1, 1, 1, 1 )
+WindowDialog/constants/close_h_ofs = 24
+WindowDialog/constants/close_v_ofs = 24
+WindowDialog/constants/scaleborder_size = 0
+WindowDialog/constants/title_height = 20
+WindowDialog/fonts/title_font = ExtResource( 1 )
+WindowDialog/icons/ = null
+WindowDialog/icons/close = ExtResource( 2 )
+WindowDialog/icons/close_highlight = ExtResource( 2 )
+WindowDialog/styles/panel = SubResource( 1 )
+

@@ -32,6 +32,9 @@ var dialogue = [
 	]
 
 func _ready():
+	#FIXME: debugging purposes
+	emit_signal("done")
+	return
 	$AnimationPlayer.connect("animation_finished", self, "_on_animation_done")
 	#$AnimationPlayer.play("boot_animation")
 	_character_timer = Timer.new()

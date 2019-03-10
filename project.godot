@@ -8,14 +8,29 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "WindowDialog",
+"class": "App",
+"language": "GDScript",
+"path": "res://VirtualOS/Components/App.gd"
+}, {
+"base": "Node",
+"class": "OS_VirtualFile",
+"language": "GDScript",
+"path": "res://VirtualOS/Singleton/VirtualFile.gd"
+} ]
 _global_script_class_icons={
-
+"App": "",
+"OS_VirtualFile": ""
 }
 
 [application]
 
 run/main_scene="res://Main.tscn"
+
+[autoload]
+
+VirtualOS="*res://VirtualOS/Singleton/VirtualOS.gd"
 
 [rendering]
 
