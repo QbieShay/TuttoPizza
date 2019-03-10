@@ -1,11 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/SketchyTrashcan.gd" type="Script" id=1]
-[ext_resource path="res://VirtualOS/Desktop/Trashcan/_trashcan1.png" type="Texture" id=2]
+[ext_resource path="res://VirtualOS/Desktop/Folder/Folder.tscn" type="PackedScene" id=2]
 [ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/Trashcan.gd" type="Script" id=3]
-[ext_resource path="res://VirtualOS/Desktop/Folder/FolderLabel.tscn" type="PackedScene" id=4]
-[ext_resource path="res://VirtualOS/Desktop/Folder/_folder1.png" type="Texture" id=5]
+[ext_resource path="res://VirtualOS/Desktop/Trashcan/Trashcan.tscn" type="PackedScene" id=4]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 129.852, 133.447 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 14.5589 )
 
 [node name="SketchyTrashcan" type="Control"]
 anchor_right = 1.0
@@ -14,34 +18,40 @@ margin_right = -704.0
 margin_bottom = -360.0
 script = ExtResource( 1 )
 
-[node name="Trashcan" type="Sprite" parent="."]
-position = Vector2( 977.883, 535.249 )
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 2 )
+[node name="Folder" type="KinematicBody2D" parent="."]
+position = Vector2( 33.426, 37.0744 )
+scale = Vector2( 0.1, 0.1 )
+
+[node name="Look" parent="Folder" instance=ExtResource( 2 )]
+scale = Vector2( 1, 1 )
+
+[node name="Collider" type="CollisionShape2D" parent="Folder"]
+position = Vector2( -1.03052, 25.7639 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 1 )
+
+[node name="Trashcan" type="KinematicBody2D" parent="."]
 script = ExtResource( 3 )
 
-[node name="Name" parent="Trashcan" instance=ExtResource( 4 )]
+[node name="Collider" type="CollisionShape2D" parent="Trashcan"]
+shape = SubResource( 2 )
 
-[node name="folder1" type="Sprite" parent="."]
-position = Vector2( 427.057, 431.171 )
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 5 )
+[node name="Look" parent="Trashcan" instance=ExtResource( 4 )]
+scale = Vector2( 0.1, 0.1 )
 
-[node name="Name" parent="folder1" instance=ExtResource( 4 )]
-margin_top = 119.804
-margin_bottom = 169.804
-text = "P0rn F0lder"
+[node name="FleeCooldown" type="Timer" parent="Trashcan"]
+one_shot = true
 
-[node name="folder2" type="Sprite" parent="."]
-modulate = Color( 0, 1, 0.858824, 1 )
-position = Vector2( 808.246, 541.944 )
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 5 )
+[node name="RayDown" type="RayCast2D" parent="Trashcan"]
+cast_to = Vector2( 0, 15 )
 
-[node name="Name" parent="folder2" instance=ExtResource( 4 )]
-margin_left = -132.845
-margin_top = 119.157
-margin_right = 130.155
-margin_bottom = 169.157
-text = "You really don't wanna see inside this"
+[node name="RayLeft" type="RayCast2D" parent="Trashcan"]
+cast_to = Vector2( 10, 0 )
 
+[node name="RayRight" type="RayCast2D" parent="Trashcan"]
+cast_to = Vector2( -10, 0 )
+
+[node name="RayUp" type="RayCast2D" parent="Trashcan"]
+cast_to = Vector2( 0, -15 )
+
+[connection signal="timeout" from="Trashcan/FleeCooldown" to="Trashcan" method="_on_FleeCooldown_timeout"]

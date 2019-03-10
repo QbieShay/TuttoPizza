@@ -13,23 +13,12 @@ border_width_right = 2
 border_width_bottom = 2
 
 [node name="folder1" type="Sprite"]
-position = Vector2( 427.057, 431.171 )
-scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 1 )
 
-[node name="Name" type="LineEdit" parent="." instance=ExtResource( 2 )]
-margin_left = -131.894
+[node name="Name" parent="." instance=ExtResource( 2 )]
 margin_top = 119.804
-margin_right = 131.106
 margin_bottom = 169.804
 custom_styles/read_only = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
-custom_colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "P0rn F0lder"
-align = 1
-editable = false
-placeholder_text = "Trashcan"
-placeholder_alpha = 1.0
-caret_blink = true
 
