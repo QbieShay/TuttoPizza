@@ -1,15 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/SketchyTrashcan.gd" type="Script" id=1]
 [ext_resource path="res://VirtualOS/Desktop/Folder/Folder.tscn" type="PackedScene" id=2]
 [ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/Trashcan.gd" type="Script" id=3]
 [ext_resource path="res://VirtualOS/Desktop/Trashcan/Trashcan.tscn" type="PackedScene" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 129.852, 133.447 )
+[sub_resource type="CircleShape2D" id=2]
+radius = 177.291
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 14.5589 )
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 13.9737
+height = 11.1705
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 31.5008
+height = 11.349
 
 [node name="SketchyTrashcan" type="Control"]
 anchor_right = 1.0
@@ -23,18 +28,19 @@ position = Vector2( 33.426, 37.0744 )
 scale = Vector2( 0.1, 0.1 )
 
 [node name="Look" parent="Folder" instance=ExtResource( 2 )]
-scale = Vector2( 1, 1 )
 
 [node name="Collider" type="CollisionShape2D" parent="Folder"]
-position = Vector2( -1.03052, 25.7639 )
-scale = Vector2( 1, 1 )
-shape = SubResource( 1 )
+position = Vector2( -3.18216, 2.504 )
+shape = SubResource( 2 )
 
 [node name="Trashcan" type="KinematicBody2D" parent="."]
 script = ExtResource( 3 )
 
 [node name="Collider" type="CollisionShape2D" parent="Trashcan"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
+
+[node name="FleeCollider" type="CollisionShape2D" parent="Trashcan"]
+shape = SubResource( 4 )
 
 [node name="Look" parent="Trashcan" instance=ExtResource( 4 )]
 scale = Vector2( 0.1, 0.1 )
@@ -42,16 +48,41 @@ scale = Vector2( 0.1, 0.1 )
 [node name="FleeCooldown" type="Timer" parent="Trashcan"]
 one_shot = true
 
-[node name="RayDown" type="RayCast2D" parent="Trashcan"]
-cast_to = Vector2( 0, 15 )
+[node name="SpeedInterpolation" type="Tween" parent="Trashcan"]
 
-[node name="RayLeft" type="RayCast2D" parent="Trashcan"]
-cast_to = Vector2( 10, 0 )
+[node name="PathChecker" type="RayCast2D" parent="Trashcan"]
 
-[node name="RayRight" type="RayCast2D" parent="Trashcan"]
-cast_to = Vector2( -10, 0 )
+[node name="TrashSpot1" type="Position2D" parent="." groups=[
+"trashcan_flee_points",
+]]
+position = Vector2( 110, 40 )
 
-[node name="RayUp" type="RayCast2D" parent="Trashcan"]
-cast_to = Vector2( 0, -15 )
+[node name="TrashSpot2" type="Position2D" parent="." groups=[
+"trashcan_flee_points",
+]]
+position = Vector2( 280, 39.9762 )
 
+[node name="TrashSpot3" type="Position2D" parent="." groups=[
+"trashcan_flee_points",
+]]
+position = Vector2( 52.3271, 220 )
+
+[node name="TrashSpot4" type="Position2D" parent="." groups=[
+"trashcan_flee_points",
+]]
+position = Vector2( 210, 150 )
+
+[node name="TrashSpot5" type="Position2D" parent="." groups=[
+"trashcan_flee_points",
+]]
+position = Vector2( 290, 220 )
+
+[node name="TrashSpot6" type="Position2D" parent="." groups=[
+"trashcan_flee_points",
+]]
+position = Vector2( 70, 120 )
+
+[connection signal="player_mistake" from="Trashcan" to="." method="_on_Trashcan_player_mistake"]
+[connection signal="wrong_file_deleted" from="Trashcan" to="." method="_on_Trashcan_wrong_file_deleted"]
 [connection signal="timeout" from="Trashcan/FleeCooldown" to="Trashcan" method="_on_FleeCooldown_timeout"]
+[connection signal="tween_completed" from="Trashcan/SpeedInterpolation" to="Trashcan" method="_on_SpeedInterpolation_tween_completed"]
