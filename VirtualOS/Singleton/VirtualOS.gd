@@ -2,28 +2,40 @@ extends Node
 
 
 var app_layer = null
-var filesystem_scene = preload("res://VirtualOS/Singleton/FileSystem.tscn")
+var clippy = null
 var filesystem = null
+var filesystem_icon_map
 
 var extension_application = {
 	"jpg": preload("res://VirtualOS/Components/ImageViewer/ImageViewer.tscn"),
+	"folder": preload("res://VirtualOS/Components/FileManager/FileManager.tscn")
 	}
 
-var opened_apps = []
 
 func _ready():
-	filesystem = filesystem_scene.instance()
+	filesystem = preload("res://VirtualOS/Singleton/FileSystem.tscn").instance()
+	filesystem_icon_map = preload("res://VirtualOS/Singleton/FileTypes/ExtensionIcons.tscn").instance()
 
 func open_file(path):
 	var file = filesystem.get_file(path)
 	var program = extension_application[file.extension].instance()
-	opened_apps.append(program)
-	app_layer.add_child(program)
-	program.connect("closed", self, "_on_program_closed")
+	app_layer.open_program(program)
+	program.connect("closed", self, "_on_program_closed", [program])
 	program.open_file(file)
 
 
+func get_file(path):
+	return filesystem.get_file(path)
+
+
+func get_filesystem_icon(extension):
+	return filesystem_icon_map.get_node(extension).filesystem_icon
+
+
 func _on_program_closed(program):
-	app_layer.remove_child(program)
-	opened_apps.erase(program)
+	app_layer.close_program(program)
 	program.queue_free()
+
+
+func get_clippy():
+	return clippy

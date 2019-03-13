@@ -4,7 +4,6 @@
 [ext_resource path="res://VirtualOS/Components/ImageViewer/ImageViewer.gd" type="Script" id=2]
 
 [node name="ImageViewer" type="WindowDialog"]
-visible = true
 margin_right = 345.0
 margin_bottom = 200.0
 theme = ExtResource( 1 )

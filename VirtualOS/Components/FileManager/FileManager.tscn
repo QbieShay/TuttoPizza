@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/VirtualOS/VirtualOSTheme.tres" type="Theme" id=1]
+[ext_resource path="res://VirtualOS/Components/FileManager/FileManager.gd" type="Script" id=2]
+[ext_resource path="res://VirtualOS/Components/FileManager/FileIcon.tscn" type="PackedScene" id=3]
+
+[node name="FileManager" type="WindowDialog"]
+margin_right = 352.0
+margin_bottom = 263.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+file_displayer = ExtResource( 3 )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[connection signal="popup_hide" from="." to="." method="_on_FileManager_popup_hide"]
