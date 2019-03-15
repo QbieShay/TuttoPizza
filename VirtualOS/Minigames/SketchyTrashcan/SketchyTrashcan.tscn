@@ -1,20 +1,17 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/SketchyTrashcan.gd" type="Script" id=1]
-[ext_resource path="res://VirtualOS/Desktop/Folder/Folder.tscn" type="PackedScene" id=2]
-[ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/Trashcan.gd" type="Script" id=3]
-[ext_resource path="res://VirtualOS/Desktop/Trashcan/Trashcan.tscn" type="PackedScene" id=4]
+[ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/Folder.gd" type="Script" id=2]
+[ext_resource path="res://VirtualOS/Desktop/Folder/Folder.tscn" type="PackedScene" id=3]
+[ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/Trashcan.gd" type="Script" id=4]
+[ext_resource path="res://VirtualOS/Desktop/Trashcan/Trashcan.tscn" type="PackedScene" id=5]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 177.291
+[sub_resource type="CircleShape2D" id=1]
+radius = 32.4256
 
-[sub_resource type="CapsuleShape2D" id=3]
-radius = 13.9737
-height = 11.1705
-
-[sub_resource type="CapsuleShape2D" id=4]
-radius = 31.5008
-height = 11.349
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 27.3828
+height = 8.02968
 
 [node name="SketchyTrashcan" type="Control"]
 anchor_right = 1.0
@@ -24,26 +21,23 @@ margin_bottom = -360.0
 script = ExtResource( 1 )
 
 [node name="Folder" type="KinematicBody2D" parent="."]
-position = Vector2( 33.426, 37.0744 )
-scale = Vector2( 0.1, 0.1 )
+position = Vector2( 104.72, 37.7803 )
+input_pickable = true
+script = ExtResource( 2 )
 
-[node name="Look" parent="Folder" instance=ExtResource( 2 )]
+[node name="Look" parent="Folder" instance=ExtResource( 3 )]
 
 [node name="Collider" type="CollisionShape2D" parent="Folder"]
-position = Vector2( -3.18216, 2.504 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Trashcan" type="KinematicBody2D" parent="."]
-script = ExtResource( 3 )
+position = Vector2( 177.53, 49.7649 )
+script = ExtResource( 4 )
 
 [node name="Collider" type="CollisionShape2D" parent="Trashcan"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
-[node name="FleeCollider" type="CollisionShape2D" parent="Trashcan"]
-shape = SubResource( 4 )
-
-[node name="Look" parent="Trashcan" instance=ExtResource( 4 )]
-scale = Vector2( 0.1, 0.1 )
+[node name="Look" parent="Trashcan" instance=ExtResource( 5 )]
 
 [node name="FleeCooldown" type="Timer" parent="Trashcan"]
 one_shot = true
@@ -51,6 +45,7 @@ one_shot = true
 [node name="SpeedInterpolation" type="Tween" parent="Trashcan"]
 
 [node name="PathChecker" type="RayCast2D" parent="Trashcan"]
+enabled = true
 
 [node name="TrashSpot1" type="Position2D" parent="." groups=[
 "trashcan_flee_points",
@@ -82,7 +77,12 @@ position = Vector2( 290, 220 )
 ]]
 position = Vector2( 70, 120 )
 
+[connection signal="mouse_entered" from="Folder" to="Folder" method="_on_Folder_mouse_entered"]
+[connection signal="mouse_exited" from="Folder" to="Folder" method="_on_Folder_mouse_exited"]
+[connection signal="started_dragging" from="Folder" to="Trashcan" method="_on_Folder_started_dragging"]
+[connection signal="stopped_dragging" from="Folder" to="Trashcan" method="_on_Folder_stopped_dragging"]
 [connection signal="player_mistake" from="Trashcan" to="." method="_on_Trashcan_player_mistake"]
 [connection signal="wrong_file_deleted" from="Trashcan" to="." method="_on_Trashcan_wrong_file_deleted"]
 [connection signal="timeout" from="Trashcan/FleeCooldown" to="Trashcan" method="_on_FleeCooldown_timeout"]
 [connection signal="tween_completed" from="Trashcan/SpeedInterpolation" to="Trashcan" method="_on_SpeedInterpolation_tween_completed"]
+[connection signal="tween_started" from="Trashcan/SpeedInterpolation" to="Trashcan" method="_on_SpeedInterpolation_tween_started"]
