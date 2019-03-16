@@ -9,19 +9,17 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.4256
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 27.3828
-height = 8.02968
+[sub_resource type="CircleShape2D" id=2]
+radius = 57.0892
 
 [node name="SketchyTrashcan" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -704.0
-margin_bottom = -360.0
 script = ExtResource( 1 )
 
 [node name="Folder" type="KinematicBody2D" parent="."]
-position = Vector2( 104.72, 37.7803 )
+editor/display_folded = true
+position = Vector2( 499.261, 69.8568 )
 input_pickable = true
 script = ExtResource( 2 )
 
@@ -30,7 +28,30 @@ script = ExtResource( 2 )
 [node name="Collider" type="CollisionShape2D" parent="Folder"]
 shape = SubResource( 1 )
 
+[node name="Folder2" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 448.363, 251.159 )
+input_pickable = true
+script = ExtResource( 2 )
+
+[node name="Look" parent="Folder2" instance=ExtResource( 3 )]
+
+[node name="Collider" type="CollisionShape2D" parent="Folder2"]
+shape = SubResource( 1 )
+
+[node name="Folder3" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 685.02, 251.902 )
+input_pickable = true
+script = ExtResource( 2 )
+
+[node name="Look" parent="Folder3" instance=ExtResource( 3 )]
+
+[node name="Collider" type="CollisionShape2D" parent="Folder3"]
+shape = SubResource( 1 )
+
 [node name="Trashcan" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 177.53, 49.7649 )
 script = ExtResource( 4 )
 
@@ -40,6 +61,7 @@ shape = SubResource( 2 )
 [node name="Look" parent="Trashcan" instance=ExtResource( 5 )]
 
 [node name="FleeCooldown" type="Timer" parent="Trashcan"]
+wait_time = 0.5
 one_shot = true
 
 [node name="SpeedInterpolation" type="Tween" parent="Trashcan"]
@@ -50,37 +72,54 @@ enabled = true
 [node name="TrashSpot1" type="Position2D" parent="." groups=[
 "trashcan_flee_points",
 ]]
-position = Vector2( 110, 40 )
+position = Vector2( 66.6967, 37.5943 )
 
 [node name="TrashSpot2" type="Position2D" parent="." groups=[
 "trashcan_flee_points",
 ]]
-position = Vector2( 280, 39.9762 )
+position = Vector2( 619.209, 364.751 )
 
 [node name="TrashSpot3" type="Position2D" parent="." groups=[
 "trashcan_flee_points",
 ]]
-position = Vector2( 52.3271, 220 )
+position = Vector2( 42.7042, 419.676 )
 
 [node name="TrashSpot4" type="Position2D" parent="." groups=[
 "trashcan_flee_points",
 ]]
-position = Vector2( 210, 150 )
+position = Vector2( 653.458, 68.2049 )
 
 [node name="TrashSpot5" type="Position2D" parent="." groups=[
 "trashcan_flee_points",
 ]]
-position = Vector2( 290, 220 )
+position = Vector2( 369.389, 54.004 )
 
 [node name="TrashSpot6" type="Position2D" parent="." groups=[
 "trashcan_flee_points",
 ]]
-position = Vector2( 70, 120 )
+position = Vector2( 306.564, 313.261 )
+
+[node name="Container" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 400.0
+
+[node name="TextureRect" type="TextureRect" parent="Container"]
+margin_right = 100.0
+margin_bottom = 100.0
 
 [connection signal="mouse_entered" from="Folder" to="Folder" method="_on_Folder_mouse_entered"]
 [connection signal="mouse_exited" from="Folder" to="Folder" method="_on_Folder_mouse_exited"]
 [connection signal="started_dragging" from="Folder" to="Trashcan" method="_on_Folder_started_dragging"]
 [connection signal="stopped_dragging" from="Folder" to="Trashcan" method="_on_Folder_stopped_dragging"]
+[connection signal="mouse_entered" from="Folder2" to="Folder2" method="_on_Folder_mouse_entered"]
+[connection signal="mouse_exited" from="Folder2" to="Folder2" method="_on_Folder_mouse_exited"]
+[connection signal="started_dragging" from="Folder2" to="Trashcan" method="_on_Folder_started_dragging"]
+[connection signal="stopped_dragging" from="Folder2" to="Trashcan" method="_on_Folder_stopped_dragging"]
+[connection signal="mouse_entered" from="Folder3" to="Folder3" method="_on_Folder_mouse_entered"]
+[connection signal="mouse_exited" from="Folder3" to="Folder3" method="_on_Folder_mouse_exited"]
+[connection signal="started_dragging" from="Folder3" to="Trashcan" method="_on_Folder_started_dragging"]
+[connection signal="stopped_dragging" from="Folder3" to="Trashcan" method="_on_Folder_stopped_dragging"]
 [connection signal="player_mistake" from="Trashcan" to="." method="_on_Trashcan_player_mistake"]
 [connection signal="wrong_file_deleted" from="Trashcan" to="." method="_on_Trashcan_wrong_file_deleted"]
 [connection signal="timeout" from="Trashcan/FleeCooldown" to="Trashcan" method="_on_FleeCooldown_timeout"]
