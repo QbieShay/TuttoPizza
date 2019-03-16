@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
-export var flee_range = 50
+signal player_win()
+
+export var flee_range = 100
 export var speed_travel = .5
 
 onready var flee_cooldown = $FleeCooldown
@@ -14,16 +16,24 @@ onready var current_point = -1
 onready var flee_points = get_tree().get_nodes_in_group("trashcan_flee_points")
 onready var look = $Look
 onready var is_dragging = false
+var _goal = null
+var completed = false
 
 signal player_mistake
 signal wrong_file_deleted
 
 func _ready():
+	print("alive from place")
 	randomize()
 
 func _process(delta):
 	if can_flee and not is_moving and __needs_to_flee():
 		__flee_from_threat()
+
+
+
+func set_goal(folder):
+	_goal = folder
 
 func __needs_to_flee():
 	var pos = get_local_mouse_position()
@@ -40,8 +50,8 @@ func __pick_a_point_to_go():
 	return point
 
 func __flee_from_threat():
-	__start_flee_cooldown()
-
+	if completed:
+		return
 	var point = __pick_a_point_to_go()
 
 	# cast the ray to that point
@@ -53,9 +63,15 @@ func __flee_from_threat():
 	var destination = path_checker.get_collision_point() if path_checker.is_colliding() else flee_points[point].position
 
 	# i save my destination length
-	var dest_len = destination.length() - bin_range.shape.radius
-	var new_dest = destination.normalized() * dest_len
-
+	
+	var dest_len = max(global_position.distance_to(destination) - bin_range.shape.radius, 0.0)
+	
+	__start_flee_cooldown()
+	if dest_len < 10:
+		return
+	
+	var new_dest = destination + (global_position - destination).normalized() * bin_range.shape.radius
+	
 	interpolator.interpolate_property(self, 'position', self.position, new_dest, speed_travel, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	interpolator.start()
 	is_moving = true
@@ -65,8 +81,6 @@ func __flee_from_threat():
 
 	path_checker.enabled = false
 
-	# notify of the player mistake
-	emit_signal("player_mistake")
 
 func __start_flee_cooldown():
 	can_flee = false
@@ -93,3 +107,20 @@ func _on_Folder_started_dragging():
 
 func _on_Folder_stopped_dragging():
 	is_dragging = false
+
+
+func _on_Area2D_body_entered(body):
+	if body == self:
+		return
+	if is_dragging and not can_flee and not completed:
+		if body != _goal:
+			emit_signal("player_mistake")
+		else:
+			_goal.queue_free()
+			var porn = VirtualOS.filesystem.get_node("porn_folder")
+			VirtualOS.filesystem.remove_child(porn)
+			porn.queue_free()
+			_goal = null
+			emit_signal("player_win")
+			completed = true
+

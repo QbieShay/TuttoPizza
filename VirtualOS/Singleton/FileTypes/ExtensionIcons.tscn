@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://VirtualOS/Singleton/FileTypes/file_type_icon.gd" type="Script" id=1]
 [ext_resource path="res://Assets/filesystem_icons/image.png" type="Texture" id=2]
-[ext_resource path="res://VirtualOS/Desktop/Trashcan/trash_1.png" type="Texture" id=3]
-[ext_resource path="res://Assets/filesystem_icons/edgy_icon.png" type="Texture" id=4]
-[ext_resource path="res://Assets/filesystem_icons/Soulstealer.png" type="Texture" id=5]
-[ext_resource path="res://VirtualOS/Desktop/Folder/folder.png" type="Texture" id=6]
+[ext_resource path="res://Assets/filesystem_icons/text.png" type="Texture" id=3]
+[ext_resource path="res://VirtualOS/Desktop/Trashcan/trash_1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/filesystem_icons/edgy_icon.png" type="Texture" id=5]
+[ext_resource path="res://Assets/filesystem_icons/Soulstealer.png" type="Texture" id=6]
+[ext_resource path="res://VirtualOS/Desktop/Folder/folder.png" type="Texture" id=7]
 
 [node name="ExtensionIcons" type="Node"]
 
@@ -13,19 +14,23 @@
 script = ExtResource( 1 )
 filesystem_icon = ExtResource( 2 )
 
-[node name="trashcan" type="Node" parent="."]
+[node name="txt" type="Node" parent="."]
 script = ExtResource( 1 )
 filesystem_icon = ExtResource( 3 )
 
-[node name="edgy" type="Node" parent="."]
+[node name="trashcan" type="Node" parent="."]
 script = ExtResource( 1 )
 filesystem_icon = ExtResource( 4 )
 
-[node name="pepo" type="Node" parent="."]
+[node name="edgy" type="Node" parent="."]
 script = ExtResource( 1 )
 filesystem_icon = ExtResource( 5 )
 
-[node name="folder" type="Node" parent="."]
+[node name="pepo" type="Node" parent="."]
 script = ExtResource( 1 )
 filesystem_icon = ExtResource( 6 )
+
+[node name="folder" type="Node" parent="."]
+script = ExtResource( 1 )
+filesystem_icon = ExtResource( 7 )
 

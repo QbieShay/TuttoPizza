@@ -37,6 +37,7 @@ frame_8/texture = ExtResource( 11 )
 frame_8/delay_sec = 0.0
 
 [node name="WindowDialog" type="WindowDialog"]
+visible = true
 margin_right = 305.0
 margin_bottom = 337.0
 custom_styles/panel = SubResource( 3 )

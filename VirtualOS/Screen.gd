@@ -4,6 +4,7 @@ extends Node
 export(PackedScene) var boot_scene
 export(PackedScene) var OS_scene
 export(PackedScene) var BSOD_scene
+export(PackedScene) var win_scene
 
 
 func _ready():
@@ -22,7 +23,13 @@ func _start_OS():
 	var os = OS_scene.instance()
 	#TODO connect to signals ...??
 	_clear_current_scene()
+	os.connect("win", self, "_on_os_win")
 	add_child(os)
+
+func _on_os_win():
+	_clear_current_scene()
+	var win = win_scene.instance()
+	add_child(win)
 
 func _clear_current_scene():
 	for c in get_children():

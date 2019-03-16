@@ -24,4 +24,4 @@ func make_exclusive(program):
 	var overlay = $ColorRect
 	for c in overlay.get_children():
 		if c != program:
-			overlay.remove_child(c)
+			close_program(c)

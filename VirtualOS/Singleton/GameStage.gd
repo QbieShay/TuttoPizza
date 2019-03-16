@@ -10,4 +10,6 @@ var game_levels = {
 	game_stages.EDGY: "mah"
 	}
 
+var current_game_state = game_stages.TRASHCAN
+
 var app_states = {}

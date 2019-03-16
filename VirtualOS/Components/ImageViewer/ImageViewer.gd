@@ -5,7 +5,7 @@ func open_file(file):
 	popup_centered()
 
 func _show_image(image_title, image):
-	$TextureRect.texture = image
+	$Panel/TextureRect.texture = image
 	$Label.text = image_title
 
 func _on_ImageViewer_popup_hide():

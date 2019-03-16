@@ -1,52 +1,172 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://VirtualOS/Singleton/FileSystem.gd" type="Script" id=1]
 [ext_resource path="res://VirtualOS/Singleton/FileTypes/ImageFileType.gd" type="Script" id=2]
-[ext_resource path="res://Assets/images/img_random_1.png" type="Texture" id=3]
-[ext_resource path="res://VirtualOS/Singleton/VirtualFile.gd" type="Script" id=4]
-[ext_resource path="res://Assets/gj.jpg" type="Texture" id=5]
+[ext_resource path="res://Assets/cursed images/birthday party.png" type="Texture" id=3]
+[ext_resource path="res://Assets/cursed images/dont trust the antivirus.png" type="Texture" id=4]
+[ext_resource path="res://Assets/cursed images/help.png" type="Texture" id=5]
+[ext_resource path="res://Assets/cursed images/sweet memories.png" type="Texture" id=6]
+[ext_resource path="res://VirtualOS/Singleton/VirtualFile.gd" type="Script" id=7]
+[ext_resource path="res://VirtualOS/Singleton/FileTypes/TxtFileType.gd" type="Script" id=8]
+[ext_resource path="res://Assets/cursed images/starway  to heaven.png" type="Texture" id=9]
+[ext_resource path="res://Assets/cursed images/teacher.png" type="Texture" id=10]
+[ext_resource path="res://Assets/cursed images/the vegan cousin.png" type="Texture" id=11]
+[ext_resource path="res://Assets/cursed images/sangria party at marks.png" type="Texture" id=12]
+[ext_resource path="res://Assets/cursed images/i told you it wasnt porn.png" type="Texture" id=13]
+[ext_resource path="res://Assets/cursed images/why not.png" type="Texture" id=14]
+[ext_resource path="res://Assets/cursed images/might be porn.png" type="Texture" id=15]
+[ext_resource path="res://Assets/cursed images/not porn.png" type="Texture" id=16]
 
 [node name="FileSystem" type="Node"]
 script = ExtResource( 1 )
 
-[node name="weird" type="Node" parent="."]
+[node name="birthday party" type="Node" parent="."]
 script = ExtResource( 2 )
 extension = "jpg"
 image = ExtResource( 3 )
-title = "weird"
+title = "birthday party"
+
+[node name="antivirus lol" type="Node" parent="."]
+script = ExtResource( 2 )
+extension = "jpg"
+image = ExtResource( 4 )
+title = "antivirus lol"
+
+[node name="help" type="Node" parent="."]
+script = ExtResource( 2 )
+extension = "jpg"
+image = ExtResource( 5 )
+title = "help"
+
+[node name="cool" type="Node" parent="."]
+script = ExtResource( 2 )
+extension = "jpg"
+image = ExtResource( 6 )
+title = "literally"
 
 [node name="folder1" type="Node" parent="."]
-script = ExtResource( 4 )
+script = ExtResource( 7 )
+extension = "folder"
+
+[node name="food" type="Node" parent="folder1"]
+script = ExtResource( 8 )
+extension = "txt"
+text = "i fucking love who invented toast. The genius was like \"see this bread? cook it again!\""
+
+[node name="toast" type="Node" parent="folder1"]
+script = ExtResource( 2 )
+extension = "jpg"
+image = ExtResource( 9 )
+title = "toast"
+
+[node name="stuff" type="Node" parent="folder1"]
+script = ExtResource( 7 )
+extension = "folder"
+
+[node name="teacher" type="Node" parent="folder1/stuff"]
+script = ExtResource( 2 )
+extension = "jpg"
+image = ExtResource( 10 )
+title = "teacher"
+
+[node name="vegan\ncousin lol" type="Node" parent="folder1/stuff"]
+script = ExtResource( 2 )
+extension = "jpg"
+image = ExtResource( 11 )
+title = "lololol"
+
+[node name="edgy_exe" type="Node" parent="folder1/stuff"]
+script = ExtResource( 7 )
+extension = "edgy"
+
+[node name="sangria party" type="Node" parent="folder1/stuff"]
+script = ExtResource( 2 )
+extension = "jpg"
+image = ExtResource( 12 )
+title = "bbbbbbbbbbbb"
+
+[node name="is_good\nadvice" type="Node" parent="folder1/stuff"]
+script = ExtResource( 8 )
+extension = "txt"
+text = "If you ever feel sad or broke, just remember that screaming is free!"
+
+[node name="funny\nimages" type="Node" parent="folder1"]
+script = ExtResource( 7 )
+extension = "folder"
+
+[node name="ducks" type="Node" parent="folder1/funny\nimages"]
+script = ExtResource( 8 )
+extension = "txt"
+text = "When i was a kid i thought i could control ducks with my mind.
+But in the end it just turns out that me and the ducks have a very similar way of thinking"
+
+[node name="future" type="Node" parent="folder1/funny\nimages"]
+script = ExtResource( 8 )
+extension = "txt"
+text = "Don't worry about the past...as for the future... well fuck"
+
+[node name="fail" type="Node" parent="folder1/funny\nimages"]
+script = ExtResource( 8 )
+extension = "txt"
+text = "The apex of failing is chocking while drinking water.
+You're both failing at breathing and drinking at the same time...which are the 2 basic things you need to live"
+
+[node name="apps" type="Node" parent="folder1/funny\nimages"]
+script = ExtResource( 7 )
+extension = "folder"
+
+[node name="pepo_exe" type="Node" parent="folder1/funny\nimages/apps"]
+script = ExtResource( 7 )
+extension = "pepo"
+
+[node name="totally\nHOMEWORKS" type="Node" parent="."]
+script = ExtResource( 7 )
 extension = "folder"
 
 [node name="totally
-notporn3" type="Node" parent="folder1"]
+notporn" type="Node" parent="totally\nHOMEWORKS"]
 script = ExtResource( 2 )
 extension = "jpg"
-image = ExtResource( 5 )
-title = "Pornino1"
+image = ExtResource( 13 )
+title = "told you"
 
-[node name="pepo_exe" type="Node" parent="folder1"]
-script = ExtResource( 4 )
-extension = "pepo"
-
-[node name="folder2" type="Node" parent="folder1"]
-script = ExtResource( 4 )
-extension = "folder"
-
-[node name="aaaa" type="Node" parent="folder1/folder2"]
+[node name="splash" type="Node" parent="totally\nHOMEWORKS"]
 script = ExtResource( 2 )
 extension = "jpg"
-image = ExtResource( 5 )
-title = "aaaaaaaaaaa"
+image = ExtResource( 14 )
+title = "splash"
 
-[node name="edgy_exe" type="Node" parent="folder1/folder2"]
-script = ExtResource( 4 )
-extension = "edgy"
-
-[node name="bbbb" type="Node" parent="folder1/folder2"]
+[node name="sexy" type="Node" parent="totally\nHOMEWORKS"]
 script = ExtResource( 2 )
 extension = "jpg"
-image = ExtResource( 5 )
-title = "bbbbbbbbbbbb"
+image = ExtResource( 15 )
+title = "maybe porn"
+
+[node name="on fire" type="Node" parent="totally\nHOMEWORKS"]
+script = ExtResource( 2 )
+extension = "jpg"
+image = ExtResource( 16 )
+title = "hotttt"
+
+[node name="date_advice" type="Node" parent="totally\nHOMEWORKS"]
+script = ExtResource( 8 )
+extension = "txt"
+text = "On a date, dont ask for her zodiac sign, ask what she used to pick at tekken 3"
+
+[node name="milk" type="Node" parent="totally\nHOMEWORKS"]
+script = ExtResource( 8 )
+extension = "txt"
+text = "The first guy who milked a cow...what was he trying to do?"
+
+[node name="trashcan" type="Node" parent="."]
+script = ExtResource( 7 )
+extension = "trashcan"
+
+[node name="credits" type="Node" parent="."]
+script = ExtResource( 8 )
+extension = "txt"
+text = "Manuel Bustamante: design and art
+QbieShay: design and programming
+Samuele Zolfanelli: Art
+VinegarLove programming and bugged minigame"
 

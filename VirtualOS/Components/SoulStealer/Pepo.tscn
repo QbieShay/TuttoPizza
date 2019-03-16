@@ -42,7 +42,7 @@ text = "Yes"
 [node name="Label" type="Label" parent="GiveSoul"]
 anchor_right = 1.0
 margin_bottom = 55.0
-text = "Give your soul to the cause?"
+text = "Burn your soul?"
 align = 1
 valign = 1
 

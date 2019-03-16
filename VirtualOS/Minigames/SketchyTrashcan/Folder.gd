@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var pick_range = 30
+export var pick_range = 20
 
 var dragging = false
 var inside = false
@@ -8,6 +8,20 @@ var delta_diff = null
 
 signal started_dragging
 signal stopped_dragging
+
+var _name
+
+func set_name_type_file(file_name: String, file_icon: Texture):
+	_name = file_name
+	$Look/Name.text = file_name
+	$Look.texture = file_icon
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.doubleclick and event.global_position.distance_to(global_position) < 10:
+			VirtualOS.open_file(_name)
+
+
 func _process(delta):
 
 	inside = __get_inside_status()

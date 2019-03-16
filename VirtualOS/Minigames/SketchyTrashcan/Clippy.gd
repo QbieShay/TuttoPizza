@@ -9,6 +9,15 @@ onready var c_fader = $FadeInterpolator
 onready var start_mod = Color(1.0, 1.0, 1.0, 0.0)
 onready var end_mod = Color(1.0, 1.0, 1.0, 1.0)
 
+func _enter_tree():
+	VirtualOS.clippy = self
+
+func _ready():
+	modulate.a = 0.0
+
+func close():
+	_on_CloseButton_pressed()
+
 func change_text(text):
 	clippy_text.text = text
 	clippy_text.visible_characters = -1

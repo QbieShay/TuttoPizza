@@ -1,20 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/VirtualOS/VirtualOSTheme.tres" type="Theme" id=1]
 [ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/SketchyTrashcan.gd" type="Script" id=2]
-[ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/Trashcan.gd" type="Script" id=3]
-[ext_resource path="res://VirtualOS/Desktop/Trashcan/Trashcan.tscn" type="PackedScene" id=4]
-[ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/Folder.gd" type="Script" id=5]
-[ext_resource path="res://VirtualOS/Desktop/Folder/Folder.tscn" type="PackedScene" id=6]
-[ext_resource path="res://VirtualOS/Desktop/File/gundam_img.tscn" type="PackedScene" id=7]
-[ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/Clippy.tscn" type="PackedScene" id=8]
-[ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/Clippy.gd" type="Script" id=9]
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 57.0892
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 45.0
+[ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/Trashcan.tscn" type="PackedScene" id=3]
 
 [node name="SketchyTrashcan" type="Control"]
 anchor_right = 1.0
@@ -34,79 +22,12 @@ you’re here to delete it? Aren’t you? So let’s get to work!!
 find the porn folder and drag it in the trash bin. easy peasy lemon squeezy!!"
 wrong_file_deleted = "Nooo, i don't want that!"
 
-[node name="Trashcan" type="KinematicBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 177.53, 49.7649 )
-script = ExtResource( 3 )
-
-[node name="Collider" type="CollisionShape2D" parent="Trashcan"]
-shape = SubResource( 2 )
-
-[node name="Look" parent="Trashcan" instance=ExtResource( 4 )]
-
-[node name="FleeCooldown" type="Timer" parent="Trashcan"]
-wait_time = 0.5
-one_shot = true
-
-[node name="SpeedInterpolation" type="Tween" parent="Trashcan"]
-
-[node name="PathChecker" type="RayCast2D" parent="Trashcan"]
-enabled = true
-
-[node name="PornFolder" type="KinematicBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 499.261, 69.8568 )
-input_pickable = true
-script = ExtResource( 5 )
-
-[node name="Look" parent="PornFolder" instance=ExtResource( 6 )]
-
-[node name="Collider" type="CollisionShape2D" parent="PornFolder"]
-shape = SubResource( 1 )
-
-[node name="File1" type="KinematicBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 448.363, 251.159 )
-input_pickable = true
-script = ExtResource( 5 )
-
-[node name="file1" parent="File1" instance=ExtResource( 7 )]
-
-[node name="Collider" type="CollisionShape2D" parent="File1"]
-shape = SubResource( 1 )
-
-[node name="File2" type="KinematicBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 509.308, 382.192 )
-input_pickable = true
-script = ExtResource( 5 )
-
-[node name="file1" parent="File2" instance=ExtResource( 7 )]
-
-[node name="Name" parent="File2/file1" index="0"]
-text = "Cool image"
-
-[node name="Collider" type="CollisionShape2D" parent="File2"]
-shape = SubResource( 1 )
-
-[node name="File3" type="KinematicBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 258.67, 286.964 )
-input_pickable = true
-script = ExtResource( 5 )
-
-[node name="file1" parent="File3" instance=ExtResource( 7 )]
-
-[node name="Name" parent="File3/file1" index="0"]
-text = "Cooler Image"
-
-[node name="Collider" type="CollisionShape2D" parent="File3"]
-shape = SubResource( 1 )
+[node name="Trashcan" parent="." instance=ExtResource( 3 )]
 
 [node name="TrashSpot1" type="Position2D" parent="." groups=[
 "trashcan_flee_points",
 ]]
-position = Vector2( 66.6967, 37.5943 )
+position = Vector2( 89.253, 70.7653 )
 
 [node name="TrashSpot2" type="Position2D" parent="." groups=[
 "trashcan_flee_points",
@@ -133,29 +54,42 @@ position = Vector2( 369.389, 54.004 )
 ]]
 position = Vector2( 306.564, 313.261 )
 
-[node name="Clippy" parent="." instance=ExtResource( 8 )]
-editor/display_folded = true
-modulate = Color( 1, 1, 1, 0 )
-script = ExtResource( 9 )
+[node name="StartPositions" type="Node2D" parent="."]
+visible = false
 
-[node name="ClippyText" parent="Clippy/Panel" index="1"]
-mouse_filter = 2
+[node name="Position2D" type="Position2D" parent="StartPositions"]
+position = Vector2( 700, 40 )
 
-[connection signal="player_mistake" from="Trashcan" to="." method="_on_Trashcan_player_mistake"]
-[connection signal="wrong_file_deleted" from="Trashcan" to="." method="_on_Trashcan_wrong_file_deleted"]
-[connection signal="timeout" from="Trashcan/FleeCooldown" to="Trashcan" method="_on_FleeCooldown_timeout"]
-[connection signal="tween_completed" from="Trashcan/SpeedInterpolation" to="Trashcan" method="_on_SpeedInterpolation_tween_completed"]
-[connection signal="tween_started" from="Trashcan/SpeedInterpolation" to="Trashcan" method="_on_SpeedInterpolation_tween_started"]
-[connection signal="started_dragging" from="PornFolder" to="Trashcan" method="_on_Folder_started_dragging"]
-[connection signal="stopped_dragging" from="PornFolder" to="Trashcan" method="_on_Folder_stopped_dragging"]
-[connection signal="pressed" from="Clippy/Panel/CloseButton" to="Clippy" method="_on_CloseButton_pressed"]
+[node name="Position2D11" type="Position2D" parent="StartPositions"]
+position = Vector2( 700, 340 )
 
-[editable path="File2/file1"]
+[node name="Position2D4" type="Position2D" parent="StartPositions"]
+position = Vector2( 590, 40 )
 
-[editable path="File2/file1/Name"]
+[node name="Position2D18" type="Position2D" parent="StartPositions"]
+position = Vector2( 590, 340 )
 
-[editable path="File3/file1"]
+[node name="Position2D9" type="Position2D" parent="StartPositions"]
+position = Vector2( 470, 40 )
 
-[editable path="File3/file1/Name"]
+[node name="Position2D17" type="Position2D" parent="StartPositions"]
+position = Vector2( 470, 340 )
 
-[editable path="Clippy"]
+[node name="Position2D2" type="Position2D" parent="StartPositions"]
+position = Vector2( 700, 140 )
+
+[node name="Position2D5" type="Position2D" parent="StartPositions"]
+position = Vector2( 590, 140 )
+
+[node name="Position2D8" type="Position2D" parent="StartPositions"]
+position = Vector2( 470, 140 )
+
+[node name="Position2D3" type="Position2D" parent="StartPositions"]
+position = Vector2( 700, 230 )
+
+[node name="Position2D6" type="Position2D" parent="StartPositions"]
+position = Vector2( 590, 230 )
+
+[node name="Position2D7" type="Position2D" parent="StartPositions"]
+position = Vector2( 470, 230 )
+

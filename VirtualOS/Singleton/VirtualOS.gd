@@ -1,5 +1,6 @@
 extends Node
 
+signal win
 
 var app_layer = null
 var clippy = null
@@ -11,8 +12,9 @@ var extension_application = {
 	"jpg": preload("res://VirtualOS/Components/ImageViewer/ImageViewer.tscn"),
 	"folder": preload("res://VirtualOS/Components/FileManager/FileManager.tscn"),
 	"pepo": preload("res://VirtualOS/Components/SoulStealer/Pepo.tscn"),
-	"edgy": preload("res://VirtualOS/Minigames/EdgyDate/EdgyDialogue.tscn"),
+	"edgy": preload("res://VirtualOS/Minigames/EdgyDate/EdgyBoot.tscn"),
 	"trashcan": preload("res://VirtualOS/Components/TrashCanApp/ThrashCanApp.tscn"),
+	"txt": preload("res://VirtualOS/Components/TxtViewer/TxtViewer.tscn")
 	}
 
 
@@ -37,6 +39,9 @@ func get_file(path):
 func get_filesystem_icon(extension):
 	return filesystem_icon_map.get_node(extension).filesystem_icon
 
+
+func win():
+	emit_signal("win")
 
 func _on_program_closed(program):
 	app_layer.close_program(program)

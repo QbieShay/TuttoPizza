@@ -26,12 +26,21 @@ _global_script_class_icons={
 
 [application]
 
-run/main_scene="res://Main.tscn"
+run/main_scene="res://VirtualOS/Screen.tscn"
 
 [autoload]
 
 VirtualOS="*res://VirtualOS/Singleton/VirtualOS.gd"
 GameStage="*res://VirtualOS/Singleton/GameStage.gd"
+
+[display]
+
+window/size/width=750
+window/size/height=500
+window/size/test_width=750
+window/size/test_height=500
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [input]
 
