@@ -154,7 +154,7 @@ var end_dialogues = [
 	"Uh, no good!",
 	"Oh my .. that is disgusting!!",
 	"Where does that even come from?!",
-	"I never thought humans can do that",
+	"I never thought humans could do that",
 	"... interesting",
 	"Wait, is that me?!",
 	"AAAARGH I NEED TO DESTROY THIS!",
@@ -196,6 +196,7 @@ func win():
 		face += 1
 		_change_face(face)
 	$EndAnimation.play("end")
+	$ColorRect.visible = true
 	yield($EndAnimation, "animation_finished")
 	VirtualOS.win()
 

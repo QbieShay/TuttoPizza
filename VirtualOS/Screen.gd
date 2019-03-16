@@ -10,6 +10,7 @@ export(PackedScene) var win_scene
 func _ready():
 	# FIXME, we want to be able to be told to boot up!
 	VirtualOS.screen = self
+	VirtualOS.connect("win", self, "_on_os_win")
 	load_boot_screen()
 
 func load_boot_screen():
@@ -23,7 +24,6 @@ func _start_OS():
 	var os = OS_scene.instance()
 	#TODO connect to signals ...??
 	_clear_current_scene()
-	os.connect("win", self, "_on_os_win")
 	add_child(os)
 
 func _on_os_win():
