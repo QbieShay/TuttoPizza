@@ -119,41 +119,41 @@ extension = "folder"
 script = ExtResource( 7 )
 extension = "pepo"
 
-[node name="totally\nHOMEWORKS" type="Node" parent="."]
+[node name="porn_folder" type="Node" parent="."]
 script = ExtResource( 7 )
 extension = "folder"
 
 [node name="totally
-notporn" type="Node" parent="totally\nHOMEWORKS"]
+notporn" type="Node" parent="porn_folder"]
 script = ExtResource( 2 )
 extension = "jpg"
 image = ExtResource( 13 )
 title = "told you"
 
-[node name="splash" type="Node" parent="totally\nHOMEWORKS"]
+[node name="splash" type="Node" parent="porn_folder"]
 script = ExtResource( 2 )
 extension = "jpg"
 image = ExtResource( 14 )
 title = "splash"
 
-[node name="sexy" type="Node" parent="totally\nHOMEWORKS"]
+[node name="sexy" type="Node" parent="porn_folder"]
 script = ExtResource( 2 )
 extension = "jpg"
 image = ExtResource( 15 )
 title = "maybe porn"
 
-[node name="on fire" type="Node" parent="totally\nHOMEWORKS"]
+[node name="on fire" type="Node" parent="porn_folder"]
 script = ExtResource( 2 )
 extension = "jpg"
 image = ExtResource( 16 )
 title = "hotttt"
 
-[node name="date_advice" type="Node" parent="totally\nHOMEWORKS"]
+[node name="date_advice" type="Node" parent="porn_folder"]
 script = ExtResource( 8 )
 extension = "txt"
 text = "On a date, dont ask for her zodiac sign, ask what she used to pick at tekken 3"
 
-[node name="milk" type="Node" parent="totally\nHOMEWORKS"]
+[node name="milk" type="Node" parent="porn_folder"]
 script = ExtResource( 8 )
 extension = "txt"
 text = "The first guy who milked a cow...what was he trying to do?"
