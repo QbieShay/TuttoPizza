@@ -5,11 +5,13 @@ var app_layer = null
 var clippy = null
 var filesystem = null
 var filesystem_icon_map
+var screen
 
 var extension_application = {
 	"jpg": preload("res://VirtualOS/Components/ImageViewer/ImageViewer.tscn"),
 	"folder": preload("res://VirtualOS/Components/FileManager/FileManager.tscn"),
 	"pepo": preload("res://VirtualOS/Components/SoulStealer/Pepo.tscn"),
+	"edgy": preload("res://VirtualOS/Minigames/EdgyDate/EdgyDialogue.tscn")
 	}
 
 
@@ -24,6 +26,8 @@ func open_file(path):
 	program.connect("closed", self, "_on_program_closed", [program])
 	program.open_file(file)
 
+func open_program_exclusive(program):
+	app_layer.make_exclusive(program)
 
 func get_file(path):
 	return filesystem.get_file(path)
@@ -40,3 +44,7 @@ func _on_program_closed(program):
 
 func get_clippy():
 	return clippy
+
+
+func reboot():
+	screen.reboot()

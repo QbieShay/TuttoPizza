@@ -13,13 +13,14 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 extension = "jpg"
 image = ExtResource( 3 )
-title = "deskie"
+title = "weird"
 
 [node name="folder1" type="Node" parent="."]
 script = ExtResource( 4 )
 extension = "folder"
 
-[node name="totally\nnotporn3" type="Node" parent="folder1"]
+[node name="totally
+notporn3" type="Node" parent="folder1"]
 script = ExtResource( 2 )
 extension = "jpg"
 image = ExtResource( 5 )
@@ -38,6 +39,10 @@ script = ExtResource( 2 )
 extension = "jpg"
 image = ExtResource( 5 )
 title = "aaaaaaaaaaa"
+
+[node name="edgy_exe" type="Node" parent="folder1/folder2"]
+script = ExtResource( 4 )
+extension = "edgy"
 
 [node name="bbbb" type="Node" parent="folder1/folder2"]
 script = ExtResource( 2 )

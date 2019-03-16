@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=5 format=2]
+[gd_resource type="Theme" load_steps=6 format=2]
 
 [ext_resource path="res://Assets/VirtualOS/BootFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Assets/VirtualOS/close.png" type="Texture" id=2]
+[ext_resource path="res://Assets/VirtualOS/Panel.tres" type="StyleBox" id=2]
+[ext_resource path="res://Assets/VirtualOS/close.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.827451, 0.752941, 0.658824, 1 )
@@ -28,6 +29,9 @@ Button/styles/normal = SubResource( 1 )
 Button/styles/pressed = null
 Dialogs/constants/button_margin = 32
 Dialogs/constants/margin = 40
+Panel/styles/panel = ExtResource( 2 )
+Panel/styles/panelf = ExtResource( 2 )
+Panel/styles/panelnc = ExtResource( 2 )
 PopupMenu/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
 PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
@@ -54,7 +58,7 @@ WindowDialog/constants/scaleborder_size = 0
 WindowDialog/constants/title_height = 20
 WindowDialog/fonts/title_font = ExtResource( 1 )
 WindowDialog/icons/ = null
-WindowDialog/icons/close = ExtResource( 2 )
-WindowDialog/icons/close_highlight = ExtResource( 2 )
+WindowDialog/icons/close = ExtResource( 3 )
+WindowDialog/icons/close_highlight = ExtResource( 3 )
 WindowDialog/styles/panel = SubResource( 2 )
 

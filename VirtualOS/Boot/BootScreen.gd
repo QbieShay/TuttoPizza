@@ -8,7 +8,7 @@ signal done()
 
 
 export(float) var short_pause_length = 0.1
-export(float) var long_pause_length = 1.5
+export(float) var long_pause_length = 0.5
 
 
 var _character_timer
@@ -23,7 +23,7 @@ var dialogue = [
 	"My computer is possessed, be careful",
 	".",
 	".\n",
-	"I’ve been watching some weird shit…",
+	"I’ve been watching some weird shit...\n",
 	"I mean REALLY weird",
 	".",
 	".",
