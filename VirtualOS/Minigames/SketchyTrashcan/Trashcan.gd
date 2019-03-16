@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var flee_range = 50
+export var speed_travel = .5
 
 onready var flee_cooldown = $FleeCooldown
 onready var flee_interpolation = $FleeCooldown
@@ -29,7 +30,7 @@ func __needs_to_flee():
 	return is_dragging and pos.x < flee_range and pos.x > -flee_range and pos.y < flee_range and pos.y > -flee_range
 
 func __pick_a_point_to_go():
-		# get a random point from the array
+	# get a random point from the array
 	var cur_size = flee_points.size()
 	var point = randi() % cur_size
 
@@ -45,12 +46,17 @@ func __flee_from_threat():
 
 	# cast the ray to that point
 	path_checker.enabled = true
-	path_checker.cast_to = flee_points[point].position
+	path_checker.cast_to = global_transform.xform_inv(flee_points[point].position)
 	path_checker.force_raycast_update()
 
 	# travel to destination, whether it's a folder or a point
 	var destination = path_checker.get_collision_point() if path_checker.is_colliding() else flee_points[point].position
-	interpolator.interpolate_property(self, 'position', self.position, destination, 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
+
+	# i save my destination length
+	var dest_len = destination.length() - bin_range.shape.radius
+	var new_dest = destination.normalized() * dest_len
+
+	interpolator.interpolate_property(self, 'position', self.position, new_dest, speed_travel, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	interpolator.start()
 	is_moving = true
 

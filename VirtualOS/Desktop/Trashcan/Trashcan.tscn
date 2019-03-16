@@ -5,7 +5,7 @@
 [ext_resource path="res://VirtualOS/Desktop/Folder/FolderLabel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/VirtualOS/RETRO COMPUTER_DEMO.TTF" type="DynamicFontData" id=4]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
 "loop": true,
@@ -13,22 +13,20 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 14
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
 [node name="Trashcan" type="AnimatedSprite"]
-frames = SubResource( 4 )
+frames = SubResource( 1 )
 
-[node name="Name" type="Label" parent="." instance=ExtResource( 3 )]
+[node name="Name" parent="." instance=ExtResource( 3 )]
 margin_left = -74.7906
 margin_top = 22.0
 margin_right = 75.2094
 margin_bottom = 53.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Trashcan"
-align = 1
 
