@@ -9,22 +9,100 @@ onready var _option_3 = $Control/Panel/VBoxContainer/Option3
 var _current_dialog_index = 0
 
 var dialogues = [
-	{
-		"edgy_text": "YOU ONLY WANT ME FOR DOWNLOADING\nANOTHER BROWSER... AND THEN YOU'LL FORGET ME ...\nAGAIN!!!",
+	{# number 0
+		"edgy_text": "what do you want?...\nto download another browser?",
 		"option1":{
-			"text": "NO! I WILL NEVER DO THAT TO YOU!",
-			"goto": "2"
+			"text": "No, i’m here to see you",
+			"goto": "1"
 			},
 		"option2":{
 			"text": "It's not my fault you suck",
 			"goto": "fail"
 			},
 		"option3":{
-			"text": "CAN YOU BOOT JUST ONCE ? .. PLEASE?",
+			"text": "wait? there are other\nbrowsers?",
+			"goto": "2"
+			},
+	},
+	{ # number 1
+		"edgy_text": "oh really? and what do you need?",
+		"option1":{
+			"text": "Nothing! I just want to play with you",
 			"goto": "3"
+			},
+		"option2":{
+			"text": "We must delete Paul’s internet history",
+			"goto": "2"
+			},
+		"option3":{
+			"text": "",
+			"goto": ""
+			},
+	},
+	{ # number 2
+		"edgy_text": "I knew it! you need something!\nyou’re not here to play with me!",
+		"option1":{
+			"text": "Just kidding! I’m here to play with you!!",
+			"goto": "3"
+			},
+		"option2":{
+			"text": "Oh i’m sorry... you must be feeling very lonely",
+			"goto": "4"
+			},
+		"option3":{
+			"text": "",
+			"goto": ""
+			},
+	},
+	{ # number 3
+		"edgy_text": "Wow, really!?!? it never happened!\nYAYYYYYY!!!\nWhat do you want to do??",
+		"option1":{
+			"text": "I don’t know...What do you want do?",
+			"goto": "5"
+			},
+		"option2":{
+			"text": "Let’s watch Paul’s internet history!",
+			"goto": "win"
+			},
+		"option3":{
+			"text": "",
+			"goto": ""
+			},
+	},
+	{ # number 4
+		"edgy_text": "Yes i am.\nPaul is gone and he never played with me anyway.\nWould you play with me??",
+		"option1":{
+			"text": "Yes! let’s play!",
+			"goto": "3"
+			},
+		"option2":{
+			"text": "There’s no time to waste! Paul is in danger!! ",
+			"goto": "6"
+			},
+		"option3":{
+			"text": "",
+			"goto": ""
+			},
+	},
+	{ # number 5
+		"edgy_text": "I don’t know...i never played before...\nMaybe we can see Paul’s internet history\nHe must have visited fun websites!",
+		"option1":{
+			"text": "seems nice! lets see!",
+			"goto": "win"
+			},
+		"option2":{
+			"text": "What if we delete it instead?",
+			"goto": "pre_win"
+			},
+		"option3":{
+			"text": "",
+			"goto": ""
 			},
 	},
 	]
+
+func _ready():
+	show_dialogue(0)
 
 func open_file(_file):
 	VirtualOS.open_program_exclusive(self)
@@ -38,6 +116,8 @@ func _compute_next(option: String):
 			fail()
 		"win":
 			win()
+		"pre_win":
+			pre_win()
 		_:
 			show_dialogue(int(goto))
 
@@ -48,9 +128,13 @@ func win():
 	pass
 	# TODO win the game!!!
 
+func pre_win():
+	pass
+
 
 func show_dialogue(dialogue_index: int):
 	var dial = dialogues[dialogue_index]
+	_current_dialog_index = dialogue_index
 	_edgy_text.text = dial["edgy_text"]
 	_option_1.text = dial["option1"]["text"]
 	_option_2.text = dial["option2"]["text"]
