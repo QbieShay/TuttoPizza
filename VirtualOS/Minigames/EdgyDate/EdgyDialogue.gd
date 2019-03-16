@@ -28,8 +28,18 @@ var dialogues = [
 
 func open_file(_file):
 	VirtualOS.open_program_exclusive(self)
+	show_dialogue(0)
 	pass
 
+func _compute_next(option: String):
+	var goto = dialogues[_current_dialog_index][option]["goto"]
+	match goto:
+		"fail":
+			fail()
+		"win":
+			win()
+		_:
+			show_dialogue(int(goto))
 
 func fail():
 	VirtualOS.reboot()
@@ -40,17 +50,21 @@ func win():
 
 
 func show_dialogue(dialogue_index: int):
-	
-	pass
+	var dial = dialogues[dialogue_index]
+	_edgy_text.text = dial["edgy_text"]
+	_option_1.text = dial["option1"]["text"]
+	_option_2.text = dial["option2"]["text"]
+	_option_3.text = dial["option3"]["text"]
+	$AnimationPlayer.play("show_next_dialog")
+
 
 func _on_Option1_pressed():
-	pass # Replace with function body.
+	_compute_next("option1")
 
 
 func _on_Option2_pressed():
-	VirtualOS.reboot()
-	pass # Replace with function body.
+	_compute_next("option2")
 
 
 func _on_Option3_pressed():
-	pass # Replace with function body.
+	_compute_next("option3")

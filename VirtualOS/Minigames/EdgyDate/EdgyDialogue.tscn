@@ -52,7 +52,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.5, 2 ),
+"times": PoolRealArray( 0, 1.2, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -85,6 +85,7 @@ margin_right = -20.0
 margin_bottom = -20.0
 
 [node name="Label" type="Label" parent="Control/Panel"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 margin_left = 6.0
 margin_top = 6.0
@@ -108,6 +109,7 @@ custom_constants/separation = 10
 alignment = 2
 
 [node name="Option1" type="Button" parent="Control/Panel/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
 margin_top = 40.0
 margin_right = 512.0
 margin_bottom = 62.0
@@ -124,6 +126,7 @@ text = "NO! I WILL NEVER DO THAT TO YOU!"
 align = 0
 
 [node name="Option2" type="Button" parent="Control/Panel/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
 margin_top = 72.0
 margin_right = 512.0
 margin_bottom = 94.0
@@ -140,6 +143,7 @@ text = "NOT MY FAULT YOU SUCK"
 align = 0
 
 [node name="Option3" type="Button" parent="Control/Panel/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
 margin_top = 104.0
 margin_right = 512.0
 margin_bottom = 126.0

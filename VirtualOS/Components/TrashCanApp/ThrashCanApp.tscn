@@ -1,0 +1,56 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://VirtualOS/Components/TrashCanApp/ThrashCanApp.gd" type="Script" id=1]
+[ext_resource path="res://Assets/VirtualOS/VirtualOSTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/TrashCanApp/hole_0008_Layer-1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/TrashCanApp/hole_0007_Layer-2.png" type="Texture" id=4]
+[ext_resource path="res://Assets/TrashCanApp/hole_0006_Layer-3.png" type="Texture" id=5]
+[ext_resource path="res://Assets/TrashCanApp/hole_0005_Layer-4.png" type="Texture" id=6]
+[ext_resource path="res://Assets/TrashCanApp/hole_0004_Layer-5.png" type="Texture" id=7]
+[ext_resource path="res://Assets/TrashCanApp/hole_0003_Layer-6.png" type="Texture" id=8]
+[ext_resource path="res://Assets/TrashCanApp/hole_0002_Layer-7.png" type="Texture" id=9]
+[ext_resource path="res://Assets/TrashCanApp/hole_0001_Layer-8.png" type="Texture" id=10]
+[ext_resource path="res://Assets/TrashCanApp/hole_0000_Layer-9.png" type="Texture" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="AnimatedTexture" id=2]
+flags = 4
+frames = 9
+fps = 20.0
+frame_0/texture = ExtResource( 3 )
+frame_1/texture = ExtResource( 4 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 5 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 6 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 7 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 8 )
+frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 9 )
+frame_6/delay_sec = 0.0
+frame_7/texture = ExtResource( 10 )
+frame_7/delay_sec = 0.0
+frame_8/texture = ExtResource( 11 )
+frame_8/delay_sec = 0.0
+
+[node name="WindowDialog" type="WindowDialog"]
+margin_right = 305.0
+margin_bottom = 337.0
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 1 )
+app_name = "trashcan"
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 2 )
+
+[connection signal="popup_hide" from="." to="." method="_on_WindowDialog_popup_hide"]

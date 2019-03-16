@@ -1,11 +1,9 @@
 [gd_resource type="Theme" load_steps=6 format=2]
 
 [ext_resource path="res://Assets/VirtualOS/BootFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Assets/VirtualOS/Panel.tres" type="StyleBox" id=2]
-[ext_resource path="res://Assets/VirtualOS/close.png" type="Texture" id=3]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.827451, 0.752941, 0.658824, 1 )
+[ext_resource path="res://Assets/VirtualOS/ButtonStyle.tres" type="StyleBox" id=2]
+[ext_resource path="res://Assets/VirtualOS/Panel.tres" type="StyleBox" id=3]
+[ext_resource path="res://Assets/VirtualOS/close.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.827451, 0.752941, 0.658824, 1 )
@@ -18,20 +16,20 @@ expand_margin_top = 26.0
 default_font = ExtResource( 1 )
 Button/colors/font_color = Color( 0, 0, 0, 1 )
 Button/colors/font_color_disabled = Color( 0.901961, 0.901961, 0.901961, 0.2 )
-Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
-Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/colors/font_color_hover = Color( 0.658824, 0.384314, 0.866667, 1 )
+Button/colors/font_color_pressed = Color( 0.678431, 0.678431, 0.678431, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = ExtResource( 1 )
-Button/styles/disabled = null
-Button/styles/focus = null
-Button/styles/hover = null
-Button/styles/normal = SubResource( 1 )
-Button/styles/pressed = null
+Button/styles/disabled = ExtResource( 2 )
+Button/styles/focus = ExtResource( 2 )
+Button/styles/hover = ExtResource( 2 )
+Button/styles/normal = ExtResource( 2 )
+Button/styles/pressed = ExtResource( 2 )
 Dialogs/constants/button_margin = 32
 Dialogs/constants/margin = 40
-Panel/styles/panel = ExtResource( 2 )
-Panel/styles/panelf = ExtResource( 2 )
-Panel/styles/panelnc = ExtResource( 2 )
+Panel/styles/panel = ExtResource( 3 )
+Panel/styles/panelf = ExtResource( 3 )
+Panel/styles/panelnc = ExtResource( 3 )
 PopupMenu/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
 PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
@@ -58,7 +56,7 @@ WindowDialog/constants/scaleborder_size = 0
 WindowDialog/constants/title_height = 20
 WindowDialog/fonts/title_font = ExtResource( 1 )
 WindowDialog/icons/ = null
-WindowDialog/icons/close = ExtResource( 3 )
-WindowDialog/icons/close_highlight = ExtResource( 3 )
+WindowDialog/icons/close = ExtResource( 4 )
+WindowDialog/icons/close_highlight = ExtResource( 4 )
 WindowDialog/styles/panel = SubResource( 2 )
 
