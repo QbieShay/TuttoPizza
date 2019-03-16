@@ -8,7 +8,8 @@ var filesystem_icon_map
 
 var extension_application = {
 	"jpg": preload("res://VirtualOS/Components/ImageViewer/ImageViewer.tscn"),
-	"folder": preload("res://VirtualOS/Components/FileManager/FileManager.tscn")
+	"folder": preload("res://VirtualOS/Components/FileManager/FileManager.tscn"),
+	"pepo": preload("res://VirtualOS/Components/SoulStealer/Pepo.tscn"),
 	}
 
 

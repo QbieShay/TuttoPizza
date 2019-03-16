@@ -1,9 +1,12 @@
-[gd_resource type="Theme" load_steps=4 format=2]
+[gd_resource type="Theme" load_steps=5 format=2]
 
 [ext_resource path="res://Assets/VirtualOS/BootFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/VirtualOS/close.png" type="Texture" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.827451, 0.752941, 0.658824, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.827451, 0.752941, 0.658824, 1 )
 border_width_top = 26
 border_color = Color( 0.176471, 0.105882, 0.180392, 1 )
@@ -12,6 +15,17 @@ expand_margin_top = 26.0
 
 [resource]
 default_font = ExtResource( 1 )
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0.901961, 0.901961, 0.901961, 0.2 )
+Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = ExtResource( 1 )
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = SubResource( 1 )
+Button/styles/pressed = null
 Dialogs/constants/button_margin = 32
 Dialogs/constants/margin = 40
 PopupMenu/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -42,5 +56,5 @@ WindowDialog/fonts/title_font = ExtResource( 1 )
 WindowDialog/icons/ = null
 WindowDialog/icons/close = ExtResource( 2 )
 WindowDialog/icons/close_highlight = ExtResource( 2 )
-WindowDialog/styles/panel = SubResource( 1 )
+WindowDialog/styles/panel = SubResource( 2 )
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://VirtualOS/Singleton/FileTypes/file_type_icon.gd" type="Script" id=1]
-[ext_resource path="res://Assets/filesystem_icons/jpg.png" type="Texture" id=2]
-[ext_resource path="res://Assets/filesystem_icons/folder.png" type="Texture" id=3]
+[ext_resource path="res://Assets/filesystem_icons/image.png" type="Texture" id=2]
+[ext_resource path="res://Assets/filesystem_icons/Soulstealer.png" type="Texture" id=3]
+[ext_resource path="res://VirtualOS/Desktop/Folder/folder.png" type="Texture" id=4]
 
 [node name="ExtensionIcons" type="Node"]
 
@@ -10,7 +11,11 @@
 script = ExtResource( 1 )
 filesystem_icon = ExtResource( 2 )
 
-[node name="folder" type="Node" parent="."]
+[node name="pepo" type="Node" parent="."]
 script = ExtResource( 1 )
 filesystem_icon = ExtResource( 3 )
+
+[node name="folder" type="Node" parent="."]
+script = ExtResource( 1 )
+filesystem_icon = ExtResource( 4 )
 

@@ -9,13 +9,27 @@ margin_right = 352.0
 margin_bottom = 263.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
+app_name = "FileManager"
 file_displayer = ExtResource( 3 )
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
 columns = 3
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = -0.15778
+margin_top = -26.0512
+margin_right = -26.0
+clip_text = true
 
 [connection signal="popup_hide" from="." to="." method="_on_FileManager_popup_hide"]

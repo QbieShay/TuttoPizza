@@ -39,6 +39,7 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.266667 )
 
 [node name="Background" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = -1
 
 [node name="TextureRect" type="TextureRect" parent="Background"]

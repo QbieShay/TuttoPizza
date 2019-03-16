@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/VirtualOS/VirtualOSTheme.tres" type="Theme" id=1]
+[ext_resource path="res://VirtualOS/Components/SoulStealer/Pepo.gd" type="Script" id=2]
+
+[node name="Pepo" type="WindowDialog"]
+margin_top = 92.0
+margin_right = 441.0
+margin_bottom = 200.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+app_name = "Pepo"
+
+[node name="GiveSoul" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GiveSoul"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -46.0
+margin_bottom = -18.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Yes1" type="Button" parent="GiveSoul/HBoxContainer"]
+margin_left = 171.0
+margin_right = 210.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Yes"
+
+[node name="Yes2" type="Button" parent="GiveSoul/HBoxContainer"]
+margin_left = 230.0
+margin_right = 269.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Yes"
+
+[node name="Label" type="Label" parent="GiveSoul"]
+anchor_right = 1.0
+margin_bottom = 55.0
+text = "Give your soul to the cause?"
+align = 1
+valign = 1
+
+[node name="Thanks" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label2" type="Label" parent="Thanks"]
+anchor_right = 1.0
+margin_bottom = 55.0
+text = "Thanks for the soul"
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Thanks"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -46.0
+margin_bottom = -18.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Yay" type="Button" parent="Thanks/HBoxContainer2"]
+margin_left = 201.0
+margin_right = 240.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Yay"
+
+[connection signal="pressed" from="GiveSoul/HBoxContainer/Yes1" to="." method="_on_Yes_pressed"]
+[connection signal="pressed" from="GiveSoul/HBoxContainer/Yes2" to="." method="_on_Yes_pressed"]
+[connection signal="pressed" from="Thanks/HBoxContainer2/Yay" to="." method="_on_Yay_pressed"]

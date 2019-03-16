@@ -8,6 +8,6 @@ func _on_TextureButton_pressed():
 	pass # Replace with function body.
 
 
-func display_file(file_icon, file_name):
-	$Label.text = file_name
+func display_file(file_icon: Texture, file_name: String):
+	$Label.text = file_name.replace("_", ".")
 	texture = file_icon
