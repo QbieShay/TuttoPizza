@@ -1,9 +1,42 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://VirtualOS/Desktop/Desktop.gd" type="Script" id=1]
 [ext_resource path="res://VirtualOS/Desktop/ApplicationLauncher.gd" type="Script" id=2]
 [ext_resource path="res://Assets/desktop.jpg" type="Texture" id=3]
-[ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/Clippy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/VirtualOS/VirtualOSTheme.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/VirtualOS/SmallFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Assets/Topbar/bar_icons.png" type="Texture" id=6]
+[ext_resource path="res://VirtualOS/Minigames/SketchyTrashcan/Clippy.tscn" type="PackedScene" id=7]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 25, 1, 9, 9 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 25, 1, 9, 9 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 13, 1, 9, 9 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 25, 13, 9, 9 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 38, 14, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 14, 14, 8, 7 )
 
 [node name="Desktop" type="Control"]
 anchor_right = 1.0
@@ -30,15 +63,85 @@ texture = ExtResource( 3 )
 stretch_mode = 1
 
 [node name="StatusBar" type="Control" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 margin_top = -20.0
+
+[node name="ColorRect" type="ColorRect" parent="StatusBar"]
+editor/display_folded = true
+margin_right = 750.0
+margin_bottom = 20.0
+theme = ExtResource( 4 )
+color = Color( 0.311844, 0.205719, 0.417969, 1 )
+
+[node name="Label" type="Label" parent="StatusBar/ColorRect"]
+margin_left = 30.0
+margin_right = 356.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 5 )
+text = "Godette OS - Wild Jam 7 Edition"
+
+[node name="TextureRect" type="TextureRect" parent="StatusBar/ColorRect"]
+margin_left = 479.537
+margin_top = 1.85316
+margin_right = 499.537
+margin_bottom = 21.8532
+rect_scale = Vector2( 0.8, 0.8 )
+texture = SubResource( 1 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="StatusBar/ColorRect"]
+margin_left = 460.539
+margin_top = 2.14238
+margin_right = 480.539
+margin_bottom = 22.1424
+rect_scale = Vector2( 0.8, 0.8 )
+texture = SubResource( 2 )
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="StatusBar/ColorRect"]
+margin_left = 440.791
+margin_top = 1.85316
+margin_right = 460.791
+margin_bottom = 21.8532
+rect_scale = Vector2( 0.8, 0.8 )
+texture = SubResource( 3 )
+expand = true
+
+[node name="TextureRect4" type="TextureRect" parent="StatusBar/ColorRect"]
+margin_left = 500.0
+margin_right = 520.0
+margin_bottom = 20.0
+texture = SubResource( 1 )
+expand = true
+
+[node name="TextureRect5" type="TextureRect" parent="StatusBar/ColorRect"]
+margin_left = 730.0
+margin_right = 750.0
+margin_bottom = 20.0
+texture = SubResource( 4 )
+expand = true
+
+[node name="TextureRect6" type="TextureRect" parent="StatusBar/ColorRect"]
+margin_left = 670.0
+margin_right = 690.0
+margin_bottom = 20.0
+texture = SubResource( 5 )
+expand = true
+
+[node name="TextureRect7" type="TextureRect" parent="StatusBar/ColorRect"]
+margin_left = 700.0
+margin_right = 720.0
+margin_bottom = 20.0
+texture = SubResource( 6 )
+expand = true
 
 [node name="Folders" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
 
-[node name="Clippy" parent="." instance=ExtResource( 4 )]
+[node name="Clippy" parent="." instance=ExtResource( 7 )]
 margin_top = 380.0
 margin_bottom = -20.0
 

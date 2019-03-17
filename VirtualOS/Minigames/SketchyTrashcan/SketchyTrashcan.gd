@@ -6,6 +6,7 @@ export(Array, String, MULTILINE) var clippy_text
 export(String, MULTILINE) var win_text
 export(String, MULTILINE) var start_text
 export(String, MULTILINE) var wrong_file_deleted
+export(String, MULTILINE) var look_for_edgy
 
 var file_displayer = preload("res://VirtualOS/Minigames/SketchyTrashcan/Regular.tscn")
 
@@ -23,6 +24,7 @@ func _ready():
 
 
 func _on_player_win():
+	clippy.change_text(look_for_edgy)
 	GameStage.current_game_state = GameStage.game_stages.EDGY
 	emit_signal("done")
 	print("WIN!!!!!")

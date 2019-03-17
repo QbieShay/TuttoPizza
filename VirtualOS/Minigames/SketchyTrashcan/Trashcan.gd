@@ -63,15 +63,15 @@ func __flee_from_threat():
 	var destination = path_checker.get_collision_point() if path_checker.is_colliding() else flee_points[point].position
 
 	# i save my destination length
-	
+
 	var dest_len = max(global_position.distance_to(destination) - bin_range.shape.radius, 0.0)
-	
+
 	__start_flee_cooldown()
 	if dest_len < 10:
 		return
-	
+
 	var new_dest = destination + (global_position - destination).normalized() * bin_range.shape.radius
-	
+
 	interpolator.interpolate_property(self, 'position', self.position, new_dest, speed_travel, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	interpolator.start()
 	is_moving = true
